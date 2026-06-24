@@ -41,21 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login — PokéCRUD</title>
-  <link rel="stylesheet" href="../assets/style.css" />
+  <title>Login — Biblioteca</title>
 </head>
-<body class="login-body">
-
-<div class="login-card">
-  <div class="login-logo">PokéCRUD</div>
-  <h1 class="login-title">Entrar no sistema</h1>
+<body>
+   <h1>Biblioteca</h1>
+  <h1>Login</h1>
 
   <?php if ($erro !== ''): ?>
     <div class="alert alert-erro"><?= htmlspecialchars($erro) ?></div>
   <?php endif; ?>
 
   <form method="POST" action="login.php">
-    <div class="form-group">
       <label for="email">E-mail</label>
       <input
         type="email"
@@ -65,9 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         value="<?= htmlspecialchars($emailFormulario) ?>"
         required
       />
-    </div>
 
-    <div class="form-group">
       <label for="senha">Senha</label>
       <input
         type="password"
@@ -76,12 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         placeholder="••••••••"
         required
       />
-    </div>
 
-    <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+    <button type="submit">Entrar</button>
   </form>
 
-</div>
+
 
 </body>
 </html>
