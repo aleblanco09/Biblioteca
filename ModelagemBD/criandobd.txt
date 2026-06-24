@@ -1,22 +1,52 @@
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
 email VARCHAR(100) NOT NULL UNIQUE,
 senha VARCHAR(6) NOT NULL,
-nomeUsuario VARCHAR(50) NOT NULL,
-idUsuario INT(4) PRIMARY KEY AUTO_INCREMENT,
-fotoPerfil VARCHAR(100)
+nome_usuario VARCHAR(50) NOT NULL,
+id_usuario INT(4) PRIMARY KEY AUTO_INCREMENT,
+foto_perfil VARCHAR(100)
 );
 
-CREATE TABLE Livro (
-nomeLivro VARCHAR(50) NOT NULL,
-idLivro INT(4) PRIMARY KEY AUTO_INCREMENT,
-nomeAutor VARCHAR(50) NOT NULL,
+CREATE TABLE livro (
+nome_livro VARCHAR(50) NOT NULL,
+id_livro INT(4) PRIMARY KEY AUTO_INCREMENT,
+nome_autor VARCHAR(50) NOT NULL,
 capa VARCHAR(100) NOT NULL,
 comentario TEXT
 );
 
-CREATE TABLE Categoria (
-nomeCategoria VARCHAR(50) NOT NULL,
-idCategoria INT(4) PRIMARY KEY AUTO_INCREMENT
+CREATE TABLE categoria (
+nome_categoria VARCHAR(50) NOT NULL,
+id_categoria INT(4) PRIMARY KEY AUTO_INCREMENT
 );
 
 
+CREATE TABLE emprestimo(
+id_emprestimo INT(4) PRIMARY KEY AUTO_INCREMENT,
+status VARCHAR(10) NOT NULL,
+data DATE NOT NULL,
+data_devolucao DATE NOT NULL,
+id_usuario INT(4) NOT NULL,
+id_livro INT(4) NOT NULL,
+FOREIGN KEY (id_usuario)
+REFERENCES usuario(id_usuario)
+ON DELETE RESTRICT
+ON UPDATE CASCADE,
+FOREIGN KEY (id_livro)
+REFERENCES livro(id_livro)
+ON DELETE RESTRICT
+ON UPDATE CASCADE,
+);
+
+CREATE TABLE pertence(
+id_livro INT(4),
+id_categoria INT(4),
+PRIMARY KEY(id_livro, id_categoria),
+FOREIGN KEY (id_livro)
+REFERENCES livro(id_livro)
+ON DELETE RESTRICT
+ON UPDATE CASCADE,
+FOREIGN KEY (id_categoria)
+REFERENCES categoria(id_categoria)
+ON DELETE RESTRICT
+ON UPDATE CASCADE
+);
