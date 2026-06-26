@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../entity/Pokemon.php';
+require_once __DIR__ . '/../entity/Livro.php';
 
 class PokemonRepository {
 
@@ -12,11 +12,11 @@ class PokemonRepository {
     }
 
     /** @return Pokemon[] */
-    public function listarPorUsuario(int $usuarioId): array {
+    public function listarLivros(int $IdLivros): array {
         $stmt = $this->pdo->prepare(
-            'SELECT * FROM pokemon WHERE usuario_id = :uid ORDER BY nome ASC'
+            'SELECT * FROM livro WHERE id_livro = :$IdLivros ORDER BY nome ASC'
         );
-        $stmt->execute([':uid' => $usuarioId]);
+        $stmt->execute([':' => $usuarioId]);
         $lista = [];
         foreach ($stmt->fetchAll() as $dados) {
             $lista[] = new Pokemon($dados);
