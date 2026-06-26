@@ -3,18 +3,17 @@
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../entity/Livro.php';
 
-class PokemonRepository {
-
-    
-    /** @return Pokemon[] */
+class LivroRepository {
+    $pdo = new PDO("mysql:host=localhost;dbname=biblioteca_bd");
+      @return Livro[]
     public function listarLivros(int $IdLivros): array {
         $stmt = $this->pdo->prepare(
-            'SELECT * FROM livro WHERE id_livro = :$IdLivros ORDER BY nome ASC'
+            'SELECT * FROM livro WHERE id_livro = :$lid ORDER BY nome ASC'
         );
-        $stmt->execute([':' => $usuarioId]);
+        $stmt->execute([':lid' => $Id]Livros);
         $lista = [];
         foreach ($stmt->fetchAll() as $dados) {
-            $lista[] = new Pokemon($dados);
+            $lista[] = new Livro($dados);
         }
         return $lista;
     }
