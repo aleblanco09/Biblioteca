@@ -1,10 +1,10 @@
 <?php
 
 require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../repository/PokemonRepository.php';
+require_once __DIR__ . '/../repository/LivroRepository.php';
 
-$repo     = new PokemonRepository();
-$pokemons = $repo->listarPorUsuario($_SESSION['usuario_id']);
+$repo     = new LivroRepository();
+$livros = $repo->listarLivros($_SESSION['usuario_id']);
 
 require_once __DIR__ . '/../includes/header.php';
 ?>
