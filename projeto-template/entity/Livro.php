@@ -14,6 +14,9 @@
         $this->comentario = $dados['comentario'] ?? '';
     }
 
-    public function getId():       int    { return $this->id; }
-    public function getNome():     string { return $this->nome; }
+    public function getId(): int { return $this->id; }
+    public function getNome(): string { return $this->nome; }
+    public function getCapa(): string { return $this->capa; }
+    public function getNomeAutor(): string { return $this->nomeAutor; }
+    public function getComentario(): string { return $this->comentario; }
 }
