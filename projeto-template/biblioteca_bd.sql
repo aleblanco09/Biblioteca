@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/06/2026 às 19:45
+-- Tempo de geração: 29/06/2026 às 01:11
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,6 +32,21 @@ CREATE TABLE `categoria` (
   `id_categoria` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`nome_categoria`, `id_categoria`) VALUES
+('fantasia', 1),
+('infantojuvenil', 2),
+('literatura brasileira', 3),
+('ficção realista', 4),
+('drama', 5),
+('ficção científica', 6),
+('aventura', 7),
+('mistério', 8),
+('terror', 9);
+
 -- --------------------------------------------------------
 
 --
@@ -40,12 +55,18 @@ CREATE TABLE `categoria` (
 
 CREATE TABLE `emprestimo` (
   `id_emprestimo` int(4) NOT NULL,
-  `status` varchar(10) NOT NULL,
   `data` date NOT NULL,
   `data_devolucao` date NOT NULL,
   `id_usuario` int(4) NOT NULL,
   `id_livro` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `emprestimo`
+--
+
+INSERT INTO `emprestimo` (`id_emprestimo`, `data`, `data_devolucao`, `id_usuario`, `id_livro`) VALUES
+(1, '2026-06-28', '2026-07-28', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -61,6 +82,15 @@ CREATE TABLE `livro` (
   `comentario` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `livro`
+--
+
+INSERT INTO `livro` (`nome_livro`, `id_livro`, `nome_autor`, `capa`, `comentario`) VALUES
+('Harry Potter e a pedra filosofal', 1, 'J. K. Rowling', '/../uploads/harrypotter.jpg', NULL),
+('Memórias Póstumas de Brás Cubas', 2, 'Machado de Assis', '/../uploads/memoriaspostumas.jpg', NULL),
+('Extraordinário', 3, 'R. J. Palacio', '/../uploads/extraordinario.jpg', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +101,17 @@ CREATE TABLE `pertence` (
   `id_livro` int(4) NOT NULL,
   `id_categoria` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `pertence`
+--
+
+INSERT INTO `pertence` (`id_livro`, `id_categoria`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -85,6 +126,14 @@ CREATE TABLE `usuario` (
   `id_usuario` int(4) NOT NULL,
   `foto_perfil` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`email`, `senha`, `nome_usuario`, `id_usuario`, `foto_perfil`) VALUES
+('usuario@email.com', '8d969e', 'Primeiro Usuário', 1, NULL),
+('bruno@email.com', '8d969e', 'Bruno', 2, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -132,25 +181,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `id_emprestimo` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_emprestimo` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `livro`
 --
 ALTER TABLE `livro`
-  MODIFY `id_livro` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_livro` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para tabelas despejadas
