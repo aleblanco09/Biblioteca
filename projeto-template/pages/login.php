@@ -52,29 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php endif; ?>
 
   <form method="POST" action="login.php">
-      <label for="email">E-mail</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="seu@email.com"
-        value="<?= htmlspecialchars($emailFormulario) ?>"
-        required
-      />
+      <label>E-mail</label>
+      <input type="email" id="email" name="email" required/>
 
-      <label for="senha">Senha</label>
-      <input
-        type="password"
-        id="senha"
-        name="senha"
-        placeholder="••••••••"
-        required
-      />
-
-    <button type="submit">Entrar</button>
+      <label>Senha</label><input type="password"name="senha" required/>
+      <button type="submit">Entrar</button>
   </form>
-
-
-
 </body>
 </html>
