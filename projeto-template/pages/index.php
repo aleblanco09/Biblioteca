@@ -7,7 +7,6 @@ require_once __DIR__ . '/../repository/PertenceRepository.php';
 
 $nomeUser = $_SESSION['usuario_nome'];
 echo "<h1>".$nomeUser."</h1>";
-<a href="../pages/logout.php">Sair</a>
 $repo = new LivroRepository();
 $livros = $repo->listarLivros();
 $repo3 = new CategoriaRepository();
@@ -39,4 +38,17 @@ $categ=""
             <a href="livro_edit.php?id=<?= $livro->getIdLivro() ?>">Editar</a>
             <a href="livro_delete.php?id=<?= $livro->getIdLivro() ?>">Excluir</a>
             <a href="emprestar.php?id=<?= $livro->getIdLivro() ?>">Empréstimo</a>
+            <?= "<br><br>";?>
         <?php endforeach; ?>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página principal</title>
+</head>
+<body>
+  
+<a href="logout.php">Sair</a>
+</body>
+</html>
