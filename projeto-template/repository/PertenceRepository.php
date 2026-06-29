@@ -9,4 +9,14 @@ class PertenceRepository {
     public function __construct() {
         $this->pdo = getConexao();
     }
+
+    public function listarPertencimentos($id_livro): array {
+        $stmt = $this->pdo->prepare('SELECT * FROM pertence WHERE id_livro=:idl);
+        $stmt->execute([':idl' => $id_livro]');
+        $lista = [];
+        foreach ($stmt->fetchAll() as $dados) {
+            $lista[] = new Pertence($dados);
+        }
+        return $lista;
+    }
 }
