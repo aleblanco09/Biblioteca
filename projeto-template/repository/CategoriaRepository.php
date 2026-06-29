@@ -17,7 +17,7 @@ class CategoriaRepository {
         $stmt->execute();
         $lista = [];
         foreach ($stmt->fetchAll() as $dados) {
-            $lista[] = new Pokemon($dados);
+            $lista[] = new Categoria($dados);
         }
         return $lista;
     }
