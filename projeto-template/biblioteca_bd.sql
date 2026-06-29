@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29/06/2026 às 05:08
+-- Tempo de geração: 29/06/2026 às 11:05
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -122,7 +122,7 @@ INSERT INTO `pertence` (`id_livro`, `id_categoria`) VALUES
 
 CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
-  `senha` varchar(6) NOT NULL,
+  `senha` char(64) NOT NULL,
   `nome_usuario` varchar(50) NOT NULL,
   `id_usuario` int(4) NOT NULL,
   `foto_perfil` varchar(100) DEFAULT NULL
@@ -133,8 +133,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`email`, `senha`, `nome_usuario`, `id_usuario`, `foto_perfil`) VALUES
-('usuario@email.com', '8d969e', 'Primeiro Usuário', 1, NULL),
-('bruno@email.com', '8d969e', 'Bruno', 2, NULL);
+('usuario@email.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Primeiro Usuário', 1, NULL),
+('bruno@email.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Bruno', 2, NULL);
 
 --
 -- Índices para tabelas despejadas
