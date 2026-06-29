@@ -2,7 +2,6 @@
 
 session_start();
 
-// Se já estiver logado, vai direto para a página principal
 if (!empty($_SESSION['usuario_id'])) {
     header('Location: index.php');
     exit;
@@ -11,7 +10,7 @@ if (!empty($_SESSION['usuario_id'])) {
 require_once __DIR__ . '/../repository/UsuarioRepository.php';
 
 $erro = '';
-$emailFormulario = $_POST['email'] ?? '';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
@@ -23,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $repo    = new UsuarioRepository();
         $usuario = $repo->buscarPorEmail($email);
 
-        // Compara o hash SHA256 da senha digitada com o hash salvo no banco
         if ($usuario && hash('sha256', $senha) === $usuario->getSenha()) {
             $_SESSION['usuario_id']   = $usuario->getId();
             $_SESSION['usuario_nome'] = $usuario->getNome();
@@ -53,9 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <form method="POST" action="login.php">
       <label>E-mail</label>
-      <input type="email" id="email" name="email" required/>
+      <input type="email" name="email" required/>
 
-      <label>Senha</label><input type="password"name="senha" required/>
+      <label>Senha</label>
+      <input type="password"name="senha" required/>
       <button type="submit">Entrar</button>
   </form>
 </body>
