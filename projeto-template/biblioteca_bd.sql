@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29/06/2026 às 01:11
+-- Tempo de geração: 29/06/2026 às 05:08
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -58,15 +58,16 @@ CREATE TABLE `emprestimo` (
   `data` date NOT NULL,
   `data_devolucao` date NOT NULL,
   `id_usuario` int(4) NOT NULL,
-  `id_livro` int(4) NOT NULL
+  `id_livro` int(4) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `emprestimo`
 --
 
-INSERT INTO `emprestimo` (`id_emprestimo`, `data`, `data_devolucao`, `id_usuario`, `id_livro`) VALUES
-(1, '2026-06-28', '2026-07-28', 2, 2);
+INSERT INTO `emprestimo` (`id_emprestimo`, `data`, `data_devolucao`, `id_usuario`, `id_livro`, `status`) VALUES
+(1, '2026-06-28', '2026-07-28', 2, 2, 'Emprestado');
 
 -- --------------------------------------------------------
 
