@@ -9,19 +9,14 @@ $livros = $repo->listarLivros();
 ?>
 
   <h2>Livros</h2>
-    <?php foreach ($pokemons as $pokemon): ?>
+    <?php foreach ($livros as $livro): ?>
           
-            <?=echo "Id:".$livro->getId() ?>
-            <<?= htmlspecialchars($pokemon->getNome()) ?>
-            <td><span class="badge badge-tipo"><?= htmlspecialchars($pokemon->getTipo()) ?></span></td>
-            <td>Lv. <?= $pokemon->getNivel() ?></td>
-            <td class="acoes">
-              <a href="pokemon_edit.php?id=<?= $pokemon->getId() ?>" class="btn btn-sm btn-editar">Editar</a>
-              <a href="pokemon_delete.php?id=<?= $pokemon->getId() ?>" class="btn btn-sm btn-excluir">Excluir</a>
-            </td>
-          
+            <?php echo "Capa:<br>"?>
+            <img src="<?=$livro->getCapa()?>">
+            <?php echo "<br>Id:".$livro->getId()."<br>"?>
+            <?php echo "Nome:".$livro->getNome()."<br>"?>
+            <?php echo "Autor:".$livro->getNomeAutor()."<br>"?>
+            <a href="livro_edit.php?id=<?= $livro->getId() ?>">Editar</a>
+            <a href="livro_delete.php?id=<?= $livro->getId() ?>">Excluir</a>
+            <a href="emprestar.php?id=<?= $livro->getId() ?>">Empréstimo</a>
         <?php endforeach; ?>
-      </tbody>
-    </table>
-  </div>
-<?php endif; ?>
