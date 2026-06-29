@@ -1,9 +1,9 @@
 <?php class Livro {
 
     private int    $id;
-    private string $nome;
+    private string $nome_livro;
     private string $capa;
-    private string $nomeAutor;
+    private string $nome_autor;
     private string $comentario;
 
     public function __construct(array $dados) {
@@ -19,4 +19,9 @@
     public function getCapa(): string { return $this->capa; }
     public function getNomeAutor(): string { return $this->nomeAutor; }
     public function getComentario(): string { return $this->comentario; }
+
+    public static function novoLivro(string $nome, string $Autor, string $capa): Livro {
+        $livro = new Livro($nome,$Autor,$capa);
+        return $livro;
+    }
 }
