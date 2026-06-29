@@ -8,8 +8,8 @@ class Usuario {
     private string $email;
 
     public function __construct(array $dados) {
-        $this->id = (int) ($dados['id'] ?? 0);
-        $this->nome = $dados['nome'] ?? '';
+        $this->id = (int) ($dados['id_usuario'] ?? 0);
+        $this->nome = $dados['nome_usuario'] ?? '';
         $this->senha = $dados['senha'] ?? '';
         $this->email = $dados['email'] ?? '';
     }
