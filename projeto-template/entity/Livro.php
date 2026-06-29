@@ -25,4 +25,18 @@
         $livro->alterarDados($nome,$autor,$capa);
         return $livro;
     }
+
+    public function alterarDados(string $nome, string $autor, string $capa): void {
+        $nome = trim($nome);
+        $autor = trim($autor);
+        $capa = trim($capa);
+
+        if ($nome === '' || $autor === '' || capa==='') {
+            throw new InvalidArgumentException('Nome e tipo são obrigatórios.');
+        }
+
+        $this->nome  = $nome;
+        $this->autor  = $autor;
+        $this->capa = $capa;
+    }
 }
