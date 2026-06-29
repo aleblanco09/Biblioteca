@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../repository/LivroRepository.php';
+require_once __DIR__ . '/../repository/CategoriaRepository.php';
+require_once __DIR__ . '/../repository/PertenceRepository.php';
 
 $repo = new LivroRepository();
 $livros = $repo->listarLivros();
@@ -30,7 +32,7 @@ $categ=""
             <?php echo "<br>Id:".$livro->getIdLivro()."<br>"?>
             <?php echo "Nome:".$livro->getNomeLivro()."<br>"?>
             <?php echo "Autor:".$livro->getNomeAutor()."<br>"?>
-            <?php echo "Categorias: ".$categ."<br>";
+            <?php echo "Categorias: ".$categ."<br>";?>
             <a href="livro_edit.php?id=<?= $livro->getIdLivro() ?>">Editar</a>
             <a href="livro_delete.php?id=<?= $livro->getIdLivro() ?>">Excluir</a>
             <a href="emprestar.php?id=<?= $livro->getIdLivro() ?>">Empréstimo</a>
