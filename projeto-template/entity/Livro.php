@@ -1,27 +1,28 @@
 <?php class Livro {
 
     private int    $id;
-    private string $nome_livro;
+    private string $nome;
     private string $capa;
-    private string $nome_autor;
+    private string $autor;
     private string $comentario;
 
     public function __construct(array $dados) {
-        $this->id = (int) ($dados['id']       ?? 0);
-        $this->nome =  $dados['nome']      ?? '';
+        $this->id = (int) ($dados['id_livro']       ?? 0);
+        $this->nome =  $dados['nome_livro']      ?? '';
         $this->capa = $dados['capa']     ?? '';
-        $this->nomeAutor = $dados['nomeAutor'] ?? '';
+        $this->autor = $dados['nome_autor'] ?? '';
         $this->comentario = $dados['comentario'] ?? '';
     }
 
     public function getId(): int { return $this->id; }
     public function getNome(): string { return $this->nome; }
     public function getCapa(): string { return $this->capa; }
-    public function getNomeAutor(): string { return $this->nomeAutor; }
+    public function getNomeAutor(): string { return $this->autor; }
     public function getComentario(): string { return $this->comentario; }
 
-    public static function novoLivro(string $nome, string $Autor, string $capa): Livro {
-        $livro = new Livro($nome,$Autor,$capa);
+    public static function novoLivro(string $nome, string $autor, string $capa): Livro {
+        $livro = new Livro();
+        $livro->alterarDados($nome,$autor,$capa);
         return $livro;
     }
 }
