@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <h1>Login</h1>
 
   <?php if ($erro !== ''): ?>
-    echo "<h3>".$erro."</h3>";
+    <?php echo "<h3>".$erro."</h3>"; ?>
   <?php endif; ?>
 
   <form method="POST" action="login.php">
