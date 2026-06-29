@@ -19,7 +19,7 @@ $categ=""
             {
               foreach ($categorias as $categoria)
                 {
-                 if($categoria === $pertencimento)
+                 if($categoria->getIdCategoria() === $pertencimento->getIdCategoriaP())
                   {
                     $categ= $categoria->getNomeCategoria()." ";
                   }
