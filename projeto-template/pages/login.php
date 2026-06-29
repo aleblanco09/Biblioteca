@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <h1>Login</h1>
 
   <?php if ($erro !== ''): ?>
-    <div class="alert alert-erro"><?= htmlspecialchars($erro) ?></div>
+    echo "<h3>".$erro."</h3>";
   <?php endif; ?>
 
   <form method="POST" action="login.php">
