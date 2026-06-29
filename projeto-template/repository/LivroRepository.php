@@ -11,7 +11,7 @@ class LivroRepository {
 
     public function listarLivros(): array {
         $stmt = $this->pdo->prepare('SELECT * FROM livro');
-        $stmt->execute([':lid' => $Id]Livros);
+        $stmt->execute();
         $lista = [];
         foreach ($stmt->fetchAll() as $dados) {
             $lista[] = new Livro($dados);
