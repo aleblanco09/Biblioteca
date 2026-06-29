@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../repository/LivroRepository.php';
 
-$repo     = new LivroRepository();
+$repo = new LivroRepository();
 $livros = $repo->listarLivros();
 
 ?>
@@ -11,12 +11,13 @@ $livros = $repo->listarLivros();
   <h2>Livros</h2>
     <?php foreach ($livros as $livro): ?>
           
+            <?php $repo2 = new PertenceRepository(); $pertencimentos= $repo2->listarPertencimentos(getId);?>
             <?php echo "Capa:<br>"?>
             <img src="<?=$livro->getCapa()?>">
-            <?php echo "<br>Id:".$livro->getId()."<br>"?>
-            <?php echo "Nome:".$livro->getNome()."<br>"?>
+            <?php echo "<br>Id:".$livro->getIdLivro()."<br>"?>
+            <?php echo "Nome:".$livro->getNomeLivro()."<br>"?>
             <?php echo "Autor:".$livro->getNomeAutor()."<br>"?>
-            <a href="livro_edit.php?id=<?= $livro->getId() ?>">Editar</a>
-            <a href="livro_delete.php?id=<?= $livro->getId() ?>">Excluir</a>
-            <a href="emprestar.php?id=<?= $livro->getId() ?>">Empréstimo</a>
+            <a href="livro_edit.php?id=<?= $livro->getIdLivro() ?>">Editar</a>
+            <a href="livro_delete.php?id=<?= $livro->getIdLivro() ?>">Excluir</a>
+            <a href="emprestar.php?id=<?= $livro->getIdLivro() ?>">Empréstimo</a>
         <?php endforeach; ?>

@@ -20,6 +20,6 @@ class Emprestimo {
     public function getStatus():      string { return $this->status; }
     public function getData():      string { return $this->data; }
     public function getDataDevolucao():     int    { return $this->data_devolucao; }
-    public function getIdUsuario(): int    { return $this->id_usuario; }
-    public function getIdLivro(): int    { return $this->id_livro; }
+    public function getIdUsuarioE(): int    { return $this->id_usuario; }
+    public function getIdLivroE(): int    { return $this->id_livro; }
 }

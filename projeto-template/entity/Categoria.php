@@ -7,6 +7,6 @@
         $this->nome = $dados['nome_categoria'] ?? '';
     }
 
-    public function getId(): int { return $this->id; }
-    public function getNome(): string { return $this->nome; }
+    public function getIdCategoria(): int { return $this->id; }
+    public function getNomeCategoria(): string { return $this->nome; }
 }

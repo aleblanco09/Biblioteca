@@ -9,6 +9,6 @@ class Pertence{
         $this->idCategoria = (int) ($dados['id_categoria'] ?? '');
     }
 
-    public function getIdLivro(): int { return $this->idLivro; }
-    public function getIdCategoria(): int { return $this->idCategoria; }
+    public function getIdLivroP(): int { return $this->idLivro; }
+    public function getIdCategoriaP(): int { return $this->idCategoria; }
 }
