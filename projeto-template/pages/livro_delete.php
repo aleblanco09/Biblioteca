@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'auth.php';
-require_once __DIR__.'../repository/LivroRepository.php';
+require_once __DIR__.'/../includes/auth.php';
+require_once __DIR__.'/../repository/LivroRepository.php';
 
 $repo = new LivroRepository();
 $id = 0;
@@ -8,11 +8,11 @@ if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
 }
 
+$livro=null;
 if ($id > 0) {
-    $livro = $livro->ProcurarId($id);
+    $livro=$repo->procurarId($id);
 }
-
-if (isset($livro)) {
+if (!isset($livro)) {
     header('Location: index.php');
     exit;
 }
@@ -32,6 +32,12 @@ if(isset($_POST['LivroDeletado']))
   <title>Confirmar exclusão</title>
 </head>
 <body>
+  <h3>Tem certeza?</h3>
+  <p>
+    Você está prestes a excluir este livro:
+    <img src="<?=$livro->getCapa()?>" width="160">
+    <?= "<br>".$livro->getNomeLivro() ?>
+  </p>
   <form method="POST" action="livro_delete.php?id=<?= $livro->getIdLivro() ?>">
     <button type="submit" name="LivroDeletado">Confirmar</button>
   </form>
