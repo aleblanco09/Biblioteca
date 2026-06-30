@@ -19,6 +19,14 @@ class LivroRepository {
         return $lista;
     }
 
-    
+    public function procurarId(int $id): ?Livro {
+        $stmt = $this->pdo->prepare('SELECT * FROM livro WHERE id_livro = :id');
+        $stmt->execute([':id' => $id]);
+        $dados = $stmt->fetch();
+        if ($dados) {
+            return new Livro($dados);
+        }
+        return null;
+    }
     
 }
