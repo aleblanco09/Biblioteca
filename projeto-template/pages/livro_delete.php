@@ -15,7 +15,13 @@ if ($id > 0) {
 if (isset($livro)) {
     header('Location: index.php');
     exit;
-}?>
+}
+if(isset($_POST['LivroDeletado']))
+  {
+    header('Location: index.php');
+    exit;
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -26,7 +32,7 @@ if (isset($livro)) {
 </head>
 <body>
   <form method="POST" action="livro_delete.php?id=<?= $livro->getIdLivro() ?>">
-    <button type="submit">Confirmar</button>
+    <button type="submit" name="LivroDeletado">Confirmar</button>
   </form>
 </body>
 </html>
