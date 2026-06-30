@@ -28,5 +28,8 @@ class LivroRepository {
         }
         return null;
     }
-    
+    public function excluirLivro(int $id): void {
+        $stmt = $this->pdo->prepare('DELETE FROM livro WHERE id_livro = :id');
+        $stmt->execute([':id' => $id]);
+    }
 }
