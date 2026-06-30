@@ -18,6 +18,7 @@ if (isset($livro)) {
 }
 if(isset($_POST['LivroDeletado']))
   {
+    $repo->excluirLivro($livro->getIdLivro());
     header('Location: index.php');
     exit;
   }
