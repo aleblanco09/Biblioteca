@@ -18,13 +18,15 @@ if (isset($livro)) {
 }?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirmar exclusão</title>
 </head>
 <body>
-  
+  <form method="POST" action="livro_delete.php?id=<?= $livro->getIdLivro() ?>">
+    <button type="submit">Confirmar</button>
+  </form>
 </body>
 </html>
