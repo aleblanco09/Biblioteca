@@ -35,7 +35,7 @@ class LivroRepository {
     public function salvarEdicao(Livro $livro): void{
             if ($livro->getIdLivro() > 0) {
             $stmt = $this->pdo->prepare('UPDATE livro SET nome_livro = :nomeL, nome_autor = :nomeA, capa = :capa WHERE id_livro = :idL');
-            $stmt->execute([':nomeL'=> $livro->getNomeLivro(),':NomeA'=> $livro->getNomeAutor(),':capa'=> $livro->getCapa(),':idL'=> $livro->getIdLivro()]);
+            $stmt->execute([':nomeL'=> $livro->getNomeLivro(),':nomeA'=> $livro->getNomeAutor(),':capa'=> $livro->getCapa(),':idL'=> $livro->getIdLivro()]);
             return;
         }
     }
