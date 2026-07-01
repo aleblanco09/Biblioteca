@@ -48,7 +48,7 @@ $categ=""
   <title>Página principal</title>
 </head>
 <body>
-  
+  <a href="livro_create.php">Criar livro</a>
 <a href="logout.php">Sair</a>
 </body>
 </html>
