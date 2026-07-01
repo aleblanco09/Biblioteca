@@ -42,3 +42,24 @@ $nomeLivro = $livro->getNomeLivro();
 $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
 $categoriasDoLivro = $categ;
+?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar livro</title>
+</head>
+<body>
+    <h2>Editar livro</h2>
+  <a href="index.php">← Voltar</a>
+<?php if ($erro !== ''): ?>
+  <p><?=$erro?></p>
+<?php endif; ?>
+
+
+<form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>">
+  </form>
+</body>
+</html>
