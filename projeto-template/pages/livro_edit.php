@@ -33,19 +33,19 @@ $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
 
 $diretorio = "../uploads/";
-if (isset($_FILES['capaEdit'])) {
+
+if (isset($_FILES['capaEdit']) && $_FILES['capaEdit']['name'] != "") {
 
     $arquivo = $_FILES['capaEdit'];
     $nomeArquivo = basename($arquivo['name']);
     $caminho = $diretorio . $nomeArquivo;
     move_uploaded_file($arquivo['tmp_name'], $caminho);
     $capa=$caminho;
-} 
-
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomeLivro  = trim($_POST['nomeLivroEdit'] ?? '');
     $nomeAutor  = trim($_POST['nomeAutorEdit'] ?? '');
-    
+
     try {
       $livro->alterarDados($nomeLivro, $nomeAutor, $capa);
       $repoLivro->salvarEdicao($livro);
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php endif; ?>
 
 
-<form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>">
+<form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
       <label>Editar nome do Livro:</label>
       <input type="text" name="nomeLivroEdit" value="<?=$nomeLivro?>" required/>
 
