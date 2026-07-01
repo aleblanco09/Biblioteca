@@ -31,9 +31,9 @@ $erro = '';
 $nomeLivro = $livro->getNomeLivro();
 $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
-
+$codLivro=$livro->getIdLivro();
 $diretorio = "../uploads/";
-
+$idEdit=0;
 if (isset($_FILES['capaEdit']) && $_FILES['capaEdit']['name'] != "") {
 
     $arquivo = $_FILES['capaEdit'];
@@ -47,9 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomeAutor  = trim($_POST['nomeAutorEdit'] ?? '');
 if(isset($_POST['categoriaEdit']))
   {
-    
+    $idEdit=(int)$_POST['categoriaEdit'];
+    $pertence = $repoRelacionamento->listarTabelaPertence();
   }
     try {
+      $repoRelacionamento->salvarPertencimento($codLivro,$idEdit);
       $livro->alterarDados($nomeLivro, $nomeAutor, $capa);
       $repoLivro->salvarEdicao($livro);
         header('Location: index.php');
