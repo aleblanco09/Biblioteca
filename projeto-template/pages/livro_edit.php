@@ -50,15 +50,11 @@ if(isset($_POST['categoriaEdit']))
     $idEdit=(int)$_POST['categoriaEdit'];
     $pertence = $repoRelacionamento->listarTabelaPertence();
   }
-    try {
       $repoRelacionamento->salvarPertencimento($codLivro,$idEdit);
       $livro->alterarDados($nomeLivro, $nomeAutor, $capa);
       $repoLivro->salvarEdicao($livro);
         header('Location: index.php');
         exit;
-    } catch (InvalidArgumentException $e) {
-        $erro = $e->getMessage();
-    }
 }
 ?>
 
@@ -71,10 +67,8 @@ if(isset($_POST['categoriaEdit']))
 </head>
 <body>
     <h2>Editar livro</h2>
-  <a href="index.php">← Voltar</a>
-<?php if ($erro !== ''): ?>
-  <p><?=$erro?></p>
-<?php endif; ?>
+  <a href="index.php">Voltar</a>
+
 
 
 <form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
