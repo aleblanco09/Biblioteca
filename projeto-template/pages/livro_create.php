@@ -22,6 +22,14 @@ if (isset($_FILES['CapaLivroCriado']) && $_FILES['CapaLivroCriado']['name'] != "
     move_uploaded_file($arquivo['tmp_name'], $caminho);
     $capa=$caminho;
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nomeLivro  = trim($_POST['LivroCriado'] ?? '');
+    $nomeAutor  = trim($_POST['AutorLivroCriado'] ?? '');
+      $livro->novoLivro($nomeLivro, $nomeAutor, $capa);
+      $repoLivro->inserirLivro($livro);
+        header('Location: index.php');
+        exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -32,6 +40,7 @@ if (isset($_FILES['CapaLivroCriado']) && $_FILES['CapaLivroCriado']['name'] != "
 </head>
 <body>
     <h2>Criar livro</h2>
+    <a href="index.php">Voltar</a>
   <a href="index.php">Voltar</a>
     <form method="POST" action="livro_create.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
 <p>Nome do livro:</p><input type="text" name="LivroCriado" required/>
