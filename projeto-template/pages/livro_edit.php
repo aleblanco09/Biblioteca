@@ -42,6 +42,19 @@ if (isset($_FILES['capaEdit'])) {
     $capa=$caminho;
 } 
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nomeLivro  = trim($_POST['nomeLivroEdit'] ?? '');
+    $nomeAutor  = trim($_POST['nomeAutorEdit'] ?? '');
+    
+    try {
+      $livro->alterarDados($nomeLivro, $nomeAutor, $capa);
+      $repoLivro->salvarEdicao($livro);
+        header('Location: index.php');
+        exit;
+    } catch (InvalidArgumentException $e) {
+        $erro = $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
