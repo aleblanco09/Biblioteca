@@ -13,3 +13,15 @@ $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
 
 $diretorio = "../uploads/";
+?>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo livro</title>
+</head>
+<body>
+    
+</body>
+</html>
