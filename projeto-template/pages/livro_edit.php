@@ -26,22 +26,9 @@ if (!isset($livro)) {
 $categ=[];
 $repoRelacionamento = new PertenceRepository();
 $relacionamentos= $repoRelacionamento->listarPertencimentos($livro->getIdLivro());
-foreach ($relacionamentos as $relacionamento)
-            {
-              foreach ($categorias as $categoria)
-                {
-                 if($categoria->getIdCategoria() === $relacionamento->getIdCategoriaP())
-                  {
-                    $categ[]= $categoria->getNomeCategoria();
-                  }
-                }
-            }
 
 $erro = '';
-$nomeLivro = $livro->getNomeLivro();
-$capa = $livro->getCapa();
-$nomeAutor = $livro->getNomeAutor();
-$categoriasDoLivro = $categ;
+
 ?>
 
 <!DOCTYPE html>
@@ -60,13 +47,21 @@ $categoriasDoLivro = $categ;
 
 
 <form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>">
-      <label>Nome do Livro:</label>
-      <input type="text" name="nomeLivroEditado" required/>
+      <label>Editar nome do Livro:</label>
+      <input type="text" name="nomeLivroEdit" required/>
 
-      <label>Nome do Autor:</label>
-      <input type="text" name="nomeAutorEditado" required/>
+      <label>Editar nome do Autor:</label>
+      <input type="text" name="nomeAutorEdit" required/>
 
-      <label>Categoria</label>
+      <label>Editar categoria:</label>
+      <select name="categoriaEdit">
+      <?php foreach($categorias as $i):?>
+<option value="<?=$i->getIdCategoria()?>"><?= $i->getNomeCategoria() ?></option>
+<?php endforeach; ?>
+</select>
+<label>Editar capa:</label><br>
+    <input type="file" name="foto" accept="image/*"><br><br>
+    <button type="submit">Enviar</button>
 
   </form>
 </body>
