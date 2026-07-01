@@ -19,7 +19,16 @@ class PertenceRepository {
         }
         return $lista;
     }
-    
+
+    public function listarTabelaPertence(): array {
+        $stmt = $this->pdo->prepare('SELECT * FROM pertence');
+        $stmt->execute();
+        $lista = [];
+        foreach ($stmt->fetchAll() as $dados) {
+            $lista[] = new Pertence($dados);
+        }
+        return $lista;
+    }
     
     public function salvarPertencimento(int $id_livro, int $id_categoria): array {
         $sql = "UPDATE pertence SET id_categoria = :idC WHERE id_livro = :idL";
