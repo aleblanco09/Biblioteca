@@ -32,7 +32,11 @@ class LivroRepository {
         $stmt = $this->pdo->prepare('DELETE FROM livro WHERE id_livro = :id');
         $stmt->execute([':id' => $id]);
     }
-    public function salvar(Livro $livro): void{
-
+    public function salvarEdicao(Livro $livro): void{
+            if ($livro->getIdLivro() > 0) {
+            $stmt = $this->pdo->prepare('UPDATE livro SET nome_livro = :nomeL, nome_autor = :nomeA, capa = :capa WHERE id_livro = :idL');
+            $stmt->execute([':nomeL'=> $livro->getNomeLivro(),':NomeA'=> $livro->getNomeAutor(),':capa'=> $livro->getCapa(),':idL'=> $livro->getIdLivro()]);
+            return;
+        }
     }
 }
