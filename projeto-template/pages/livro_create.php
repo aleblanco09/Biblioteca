@@ -24,11 +24,11 @@ $diretorio = "../uploads/";
 <body>
     <h2>Editar livro</h2>
   <a href="index.php">Voltar</a>
-  <?php if ($erro !== ''): ?>
-  <p><?=$erro?></p>
-<?php endif; ?>
     <form method="POST" action="livro_create.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
-
+<p>Nome do livro:</p><input type="text" name="LivroCriado" required/>
+<p>Nome do autor:</p><input type="text" name="AutorLivroCriado" required/>
+<p>Capa do livro:</p> <input type="file" name="CapaLivroCriado" accept="image/* required">
+    <button type="submit">Enviar</button>
     </form>
 </body>
 </html>
