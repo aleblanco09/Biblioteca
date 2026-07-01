@@ -30,7 +30,7 @@
         $nome = trim($nome);
         $autor = trim($autor);
         $capa = trim($capa);
-        if ($nome === '' || $autor === '' || capa==='') {
+        if ($nome === '' || $autor === '' || $capa==='') {
             throw new InvalidArgumentException('Nome, autor e capa não podem ficar vazios');
         }
         $this->nome  = $nome;
