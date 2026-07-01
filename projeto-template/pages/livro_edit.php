@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>">
       <label>Editar nome do Livro:</label>
-      <input type="text" name="nomeLivroEdit" required/>
+      <input type="text" name="nomeLivroEdit" value="<?=$nomeLivro?>" required/>
 
       <label>Editar nome do Autor:</label>
-      <input type="text" name="nomeAutorEdit" required/>
+      <input type="text" name="nomeAutorEdit" value="<?=$nomeAutor?>" required/>
 
       <label>Editar categoria:</label>
       <select name="categoriaEdit">
