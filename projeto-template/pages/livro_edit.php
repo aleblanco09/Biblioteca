@@ -60,6 +60,14 @@ $categoriasDoLivro = $categ;
 
 
 <form method="POST" action="livro_edit.php?id=<?=$livro->getIdLivro()?>">
+      <label>Nome do Livro:</label>
+      <input type="text" name="nomeLivroEditado" required/>
+
+      <label>Nome do Autor:</label>
+      <input type="text" name="nomeAutorEditado" required/>
+
+      <label>Categoria</label>
+
   </form>
 </body>
 </html>
