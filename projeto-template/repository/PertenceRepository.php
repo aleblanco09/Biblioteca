@@ -26,5 +26,11 @@ class PertenceRepository {
         $stmt->bindValue(':idC', $id_categoria);
         $stmt->bindValue(':idL', $id_livro);
         $stmt->execute();
+        
+        $lista=[];
+        foreach ($stmt->fetchAll() as $dados) {
+            $lista[] = new Pertence($dados);
+        }
+        return $lista;
     }
 }
