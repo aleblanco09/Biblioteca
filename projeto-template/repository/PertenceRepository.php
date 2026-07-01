@@ -31,8 +31,8 @@ class PertenceRepository {
     }
     
     public function salvarPertencimento(int $id_livro, int $id_categoria): array {
-        $sql = "UPDATE pertence SET id_categoria = :idC WHERE id_livro = :idL";
-        $stmt = this->pdo->prepare($sql);
+        $sql = "UPDATE pertence SET id_livro = :idL WHERE id_categoria = :idC";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':idC', $id_categoria);
         $stmt->bindValue(':idL', $id_livro);
         $stmt->execute();
