@@ -45,7 +45,10 @@ if (isset($_FILES['capaEdit']) && $_FILES['capaEdit']['name'] != "") {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomeLivro  = trim($_POST['nomeLivroEdit'] ?? '');
     $nomeAutor  = trim($_POST['nomeAutorEdit'] ?? '');
-
+if(isset($_POST['categoriaEdit']))
+  {
+    
+  }
     try {
       $livro->alterarDados($nomeLivro, $nomeAutor, $capa);
       $repoLivro->salvarEdicao($livro);
