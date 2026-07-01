@@ -13,6 +13,15 @@ $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
 
 $diretorio = "../uploads/";
+
+if (isset($_FILES['CapaLivroCriado']) && $_FILES['CapaLivroCriado']['name'] != "") {
+
+    $arquivo = $_FILES['CapaLivroCriado'];
+    $nomeArquivo = basename($arquivo['name']);
+    $caminho = $diretorio . $nomeArquivo;
+    move_uploaded_file($arquivo['tmp_name'], $caminho);
+    $capa=$caminho;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">
