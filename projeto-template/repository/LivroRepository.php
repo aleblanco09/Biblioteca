@@ -32,4 +32,7 @@ class LivroRepository {
         $stmt = $this->pdo->prepare('DELETE FROM livro WHERE id_livro = :id');
         $stmt->execute([':id' => $id]);
     }
+    public function salvar(Livro $livro): void{
+
+    }
 }
