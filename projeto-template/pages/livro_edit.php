@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
 
 $livro = null;
 if ($id > 0) {
-    $livro = $repo->procurarId($id);
+    $livro = $repoLivro->procurarId($id);
 }
 
 if (!isset($livro)) {
@@ -28,6 +28,19 @@ $repoRelacionamento = new PertenceRepository();
 $relacionamentos= $repoRelacionamento->listarPertencimentos($livro->getIdLivro());
 
 $erro = '';
+$nomeLivro = $livro->getNomeLivro();
+$capa = $livro->getCapa();
+$nomeAutor = $livro->getNomeAutor();
+
+$diretorio = "../uploads/";
+if (isset($_FILES['capaEdit'])) {
+
+    $arquivo = $_FILES['capaEdit'];
+    $nomeArquivo = basename($arquivo['name']);
+    $caminho = $diretorio . $nomeArquivo;
+    move_uploaded_file($arquivo['tmp_name'], $caminho);
+    $capa=$caminho;
+} 
 
 ?>
 
@@ -59,8 +72,8 @@ $erro = '';
 <option value="<?=$i->getIdCategoria()?>"><?= $i->getNomeCategoria() ?></option>
 <?php endforeach; ?>
 </select>
-<label>Editar capa:</label><br>
-    <input type="file" name="foto" accept="image/*"><br><br>
+<label>Editar capa:</label>
+    <input type="file" name="capaEdit" accept="image/*"><br><br>
     <button type="submit">Enviar</button>
 
   </form>
