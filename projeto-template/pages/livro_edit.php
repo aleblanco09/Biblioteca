@@ -7,6 +7,7 @@ require_once __DIR__ . '/../repository/PertenceRepository.php';
 
 $repoLivro = new LivroRepository();
 $repoCategoria = new CategoriaRepository();
+$categorias = $repoCategoria->listarCategorias();
 
 $id = 0;
 if (isset($_GET['id'])) {
@@ -22,13 +23,22 @@ if (!isset($livro)) {
     header('Location: index.php');
     exit;
 }
-
+$categ=[];
 $repoRelacionamento = new PertenceRepository();
 $relacionamentos= $repoRelacionamento->listarPertencimentos($livro->getIdLivro());
-
+foreach ($relacionamentos as $relacionamento)
+            {
+              foreach ($categorias as $categoria)
+                {
+                 if($categoria->getIdCategoria() === $relacionamento->getIdCategoriaP())
+                  {
+                    $categ[]= $categoria->getNomeCategoria();
+                  }
+                }
+            }
 
 $erro = '';
 $nomeLivro = $livro->getNomeLivro();
 $capa = $livro->getCapa();
 $nomeAutor = $livro->getNomeAutor();
-$categoriasDoLivro = 
+$categoriasDoLivro = $categ;
