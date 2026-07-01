@@ -22,7 +22,7 @@ $diretorio = "../uploads/";
     <title>Novo livro</title>
 </head>
 <body>
-    <h2>Editar livro</h2>
+    <h2>Criar livro</h2>
   <a href="index.php">Voltar</a>
     <form method="POST" action="livro_create.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
 <p>Nome do livro:</p><input type="text" name="LivroCriado" required/>
