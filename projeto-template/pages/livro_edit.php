@@ -15,3 +15,7 @@ if ($id > 0) {
     $livro = $repo->procurarId($id);
 }
 
+if (!isset($livro)) {
+    header('Location: index.php');
+    exit;
+}
