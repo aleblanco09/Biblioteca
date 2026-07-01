@@ -11,4 +11,12 @@ class Pertence{
 
     public function getIdLivroP(): int { return $this->idLivro; }
     public function getIdCategoriaP(): int { return $this->idCategoria; }
+    
+    public function alterarPertencimentos(int $idLivro,int $idCategoria): void
+    {
+        $idL=$idLivro;
+        $idC=$idCategoria;
+        $this->idLivro  = $idLivro;
+        $this->idCategoria = $idCategoria;
+    }
 }
