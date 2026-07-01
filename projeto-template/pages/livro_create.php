@@ -8,21 +8,20 @@ require_once __DIR__ . '/../repository/PertenceRepository.php';
 $repoLivro = new LivroRepository();
 
 $erro = "";
-$nomeLivro = $livro->getNomeLivro();
-$capa = $livro->getCapa();
-$nomeAutor = $livro->getNomeAutor();
+$nomeLivro ="";
+$capa ="";
+$nomeAutor ="";
 
 $diretorio = "../uploads/";
 
-if (isset($_FILES['CapaLivroCriado']) && $_FILES['CapaLivroCriado']['name'] != "") {
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['CapaLivroCriado'])) {
     $arquivo = $_FILES['CapaLivroCriado'];
     $nomeArquivo = basename($arquivo['name']);
     $caminho = $diretorio . $nomeArquivo;
     move_uploaded_file($arquivo['tmp_name'], $caminho);
     $capa=$caminho;
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomeLivro  = trim($_POST['LivroCriado'] ?? '');
     $nomeAutor  = trim($_POST['AutorLivroCriado'] ?? '');
       $livro->novoLivro($nomeLivro, $nomeAutor, $capa);
@@ -41,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h2>Criar livro</h2>
     <a href="index.php">Voltar</a>
-  <a href="index.php">Voltar</a>
-    <form method="POST" action="livro_create.php?id=<?=$livro->getIdLivro()?>" enctype="multipart/form-data">
+    <form method="POST" action="livro_create.php" enctype="multipart/form-data">
 <p>Nome do livro:</p><input type="text" name="LivroCriado" required/>
 <p>Nome do autor:</p><input type="text" name="AutorLivroCriado" required/>
 <p>Capa do livro:</p> <input type="file" name="CapaLivroCriado" accept="image/* required">
