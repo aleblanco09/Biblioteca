@@ -39,4 +39,9 @@ class LivroRepository {
             return;
         }
     }
+    public function inserirLivro(Livro $livro)
+    {
+        $stmt = $this->pdo->prepare('INSERT INTO livro (nome_livro,nome_autor, capa) VALUES (:nomeL,:nomeA, :capa)');
+        $stmt->execute([':nomeL'=>$livro->getNomeLivro(),':nomeA'=>$livro->getNomeAutor(),':capa'=>$livro->getCapa()]);
+    }
 }
